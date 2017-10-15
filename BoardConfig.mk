@@ -28,6 +28,11 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=mako lpj=
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 TARGET_KERNEL_SOURCE := kernel/qcom/msm8960
 TARGET_KERNEL_CONFIG := mako_defconfig
+BOARD_KERNEL_IMAGE_NAME := zImage
+
+TARGET_GCC_VERSION_ARM := 4.8
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/arm/arm-eabi-4.8/bin
 
 BOARD_USES_ALSA_AUDIO:= true
 
@@ -89,5 +94,7 @@ OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 DEVICE_MANIFEST_FILE := device/lge/mako/manifest.xml
 
 TARGET_NEEDS_PLATFORM_TEXTRELS := true
+
+TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 
 -include vendor/lge/mako/BoardConfigVendor.mk
